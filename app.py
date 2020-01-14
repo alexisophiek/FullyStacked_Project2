@@ -15,8 +15,6 @@ pguser = input('what is your Postgres username?')
 pw = input('what is your postgres password?')
 engine = create_engine(f'postgresql://{pguser}:{pw}@localhost:52866/USDA_Foods')
 # engine = create_engine(f'postgresql://postgres:Bl@st0ise18@localhost:52866/USDA_Foods')
-
-
 print('line 34')
 
 #################################################
@@ -26,7 +24,9 @@ print('line 34')
 @app.route("/")
 def welcome():
     """List all available api routes."""
-    return (f"<h1> Welcome to Foods</h1>")
+    # return (f"<h1> Welcome to Foods</h1>")
+    return render_template("index.html")
+    # return render_template("index.html", list=doc)
 
 if __name__ == '__main__':
 	app.run(debug=True)
