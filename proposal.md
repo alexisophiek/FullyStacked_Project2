@@ -8,6 +8,9 @@ https://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-do
 Counties GEOJson File:
 https://eric.clst.org/tech/usgeojson/
 
+Countries GeoJson File from Leaflet:
+https://leafletjs.com/examples/choropleth/us-states.js
+
 ## Github Repository
 https://github.com/alexisophiek/FullyStacked_Project2
 
