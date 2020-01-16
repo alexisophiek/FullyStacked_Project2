@@ -5,6 +5,9 @@ By Team Fully Stacked
 Enormous CSV download from USDA
 https://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-documentation-downloads/#Current%20Version
 
+Counties GEOJson File:
+https://eric.clst.org/tech/usgeojson/
+
 ## Github Repository
 https://github.com/alexisophiek/FullyStacked_Project2
 

@@ -25,10 +25,21 @@ print('line 34')
 #################################################
 
 @app.route("/")
-@app.route('/index')
+@app.route("/index")
 def index():
     # """List all available api routes."""
     return render_template('index.html', title='Home')
+
+
+@app.route('/map')
+def map():
+    # """List all available api routes."""
+    return render_template('map.html', title='MapVisualization')
+
+@app.route('/presentation')
+def presentation():
+    # """List all available api routes."""
+    return render_template('presentation.html', title='Presentation')
 
 if __name__ == '__main__':
 	app.run(debug=True)
