@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 from getpass import getpass
 
 
-app = Flask(__name__, static_url_path='', template_folder="templates")
+app = Flask(__name__)
 pguser = input('what is your Postgres username?')
 
 pw = getpass()
@@ -29,8 +29,6 @@ print('line 34')
 def index():
     # """List all available api routes."""
     return render_template('index.html', title='Home')
-    return app.send_static_file("static/css/style.css")
-
 
 if __name__ == '__main__':
 	app.run(debug=True)
