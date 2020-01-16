@@ -1,24 +1,24 @@
-#Proposal for Food Environment Atlas Analysis
+# Proposal for Food Environment Atlas Analysis
 By Team Fully Stacked
 
-##DataSet
+## DataSet
 Enormous CSV download from USDA
 https://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-documentation-downloads/#Current%20Version
 
-##Github Repository
+## Github Repository
 https://github.com/alexisophiek/FullyStacked_Project2
 
 
-##General Questions
+##  Questions
 What Counties have a higher risk of adverse Health Outcomes?
 What is the Socio-Economic Breakdown of that County?
 Does Proximity to Food resources affect these two variables (health outcomes, assistance) in this County?  What about the whole State? The Whole Country? (These could be dropdown options)
 
-##Inspiration
+## Inspiration
 USDA’s Map visualization on this Data is helpful as we develop our initial insights.  It helped us discover the questions we wanted to answer and how we might improve on the data.
 https://www.ers.usda.gov/data-products/food-environment-atlas/go-to-the-atlas/
 
-##Potential Visualizations
+## Potential Visualizations
 Primary - Oregon Heat Map by County based on Health Risks (Obesity/Diabetes/et al)
 County Hover - Detach, Zoom, Input Proximity Info into County Shape - AK to Research
 
@@ -31,7 +31,7 @@ Fast Food
 Prove our Skepticism of Proximity to Local Farms as uninteresting/inconclusive to health
 Farmers Markets
 
-##The Stack
+## The Stack
 Upload CSV tabs as individuals tables to PostgresSQL and test query ability
 Sketch Potential Visuals for End Analysis
 Brainstorm Layout of Information and how to create Usability/Interaction
