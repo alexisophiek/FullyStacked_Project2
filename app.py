@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 from getpass import getpass
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', template_folder="templates")
 pguser = input('what is your Postgres username?')
 
 pw = getpass()
@@ -25,11 +25,12 @@ print('line 34')
 #################################################
 
 @app.route("/")
-def welcome():
-    """List all available api routes."""
-    # return (f"<h1> Welcome to Foods</h1>")
-    return render_template("index.html")
-    # return render_template("index.html", list=doc)
+@app.route('/index')
+def index():
+    # """List all available api routes."""
+    return render_template('index.html', title='Home')
+    return app.send_static_file("static/css/style.css")
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
