@@ -23,8 +23,12 @@ print('line 34')
 # Flask Setup
 #################################################
 
+<<<<<<< Updated upstream
 # print("x new query" * 5)
 # print("x new query")
+=======
+
+>>>>>>> Stashed changes
 
 @app.route("/")
 # @app.route("/index")
