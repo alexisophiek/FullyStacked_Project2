@@ -22,26 +22,38 @@ app = Flask(__name__)
 THIS FILE SHOULD ONLY RUN THE FLASK APP AND DECLARE ROUTES 
 """
 # json = json.loads(open('/data/counties.json').read())
-data = {}
+# data = {}
+
+geo = []
+
 
 def county():
-
+	'''
+	What parameters? Later > file
+	Returns -- 
+	'''
 	# response = json.loads(open('data/counties.json').read())
 	# with open('data/counties.json', 'r') as file:
 	# 	jsondata = json.load(file)
 
 	with open('data/counties.json', 'r', encoding = "ISO-8859-1") as f:
 		data = json.load(f)
-		# data = jsonify(data)
-		print(data)
-	return data
+		value = data['features']
+
+		# jsondata = json.dumps(data)
+		# jsondata = json.dumps(data)
+		# print(data)
+		for c in value:
+			geo.append(c)
+		return data
 
 
 # print(county())
-county()
+# county()
 # print(county())
-print(data)
 
+
+print(geo)
 # print(data.features)
 
 
