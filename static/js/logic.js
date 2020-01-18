@@ -28,6 +28,27 @@ anime.timeline({loop: true})
   });
   //Animation END
 
+ //
+ d3.json(counties, function(data) {
+  // Creating a geoJSON layer with the retrieved data
+  L.geoJson(data, {
+    // Style each feature (in this case a neighborhood)
+    style: function(feature) {
+      return {
+        color: "white",
+        // Call the chooseColor function to decide which color to color our neighborhood (color based on borough)
+        // fillColor: chooseColor(feature.properties.borough),
+        fillColor: '#74B6E6',
+        fillOpacity: 0.5,
+        weight: 1.5
+      };
+    },
+...
+}).addTo(map);
+});
+//
+  
+
   // Connect to DB and make sure we can query
 
 //   var pg = require(‘pg’);
