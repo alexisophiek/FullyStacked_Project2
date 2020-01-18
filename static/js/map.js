@@ -1,4 +1,4 @@
-var counties = '/data/counties.json'
+var counties = '../data/counties.json'
 
 var myMap = L.map("map", {
   // Portland OR
@@ -6,7 +6,8 @@ var myMap = L.map("map", {
   // US
     // center: [39.977825662466266, -98.934902125],
     // center: [45.51179, -100.67563],
-    zoom: 5
+    zoom: 5,
+    maxZoom: 7
 
     // layers: [streetmap, counties]
   });
@@ -39,5 +40,5 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     },
     
   }).addTo(myMap);
-  
+
 });
