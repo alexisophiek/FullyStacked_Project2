@@ -10,13 +10,12 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from getpass import getpass
 
-
 app = Flask(__name__)
 pguser = input('what is your Postgres username?')
 
 pw = getpass()
 # pw = input('what is your postgres password?')
-engine = create_engine(f'postgresql://{pguser}:{pw}@localhost:52866/USDA_Foods')
+# engine = create_engine(f'postgresql://{pguser}:{pw}@localhost:52866/USDA_Foods')
 # engine = create_engine(f'postgresql://postgres:Bl@st0ise18@localhost:52866/USDA_Foods')
 print('line 34')
 
@@ -24,19 +23,24 @@ print('line 34')
 # Flask Setup
 #################################################
 
+# print("x new query" * 5)
+# print("x new query")
+
 @app.route("/")
-@app.route("/index")
+# @app.route("/index")
 def index():
+	# print('line 32  route')
     # """List all available api routes."""
+    # return render_template(['index.html','index2.html'], title='Home')
     return render_template('index.html', title='Home')
 
-
-@app.route('/map')
+@app.route("/map")
 def map():
     # """List all available api routes."""
-    return render_template('map.html', title='MapVisualization')
+    # return render_template('map.html', title='MapVisualization')
+    return render_template('map.html')
 
-@app.route('/presentation')
+@app.route("/presentation")
 def presentation():
     # """List all available api routes."""
     return render_template('presentation.html', title='Presentation')
