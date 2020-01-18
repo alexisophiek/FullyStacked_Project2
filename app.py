@@ -11,24 +11,15 @@ from sqlalchemy.orm import Session
 from getpass import getpass
 
 app = Flask(__name__)
-pguser = input('what is your Postgres username?')
 
-pw = getpass()
-# pw = input('what is your postgres password?')
-# engine = create_engine(f'postgresql://{pguser}:{pw}@localhost:52866/USDA_Foods')
-# engine = create_engine(f'postgresql://postgres:Bl@st0ise18@localhost:52866/USDA_Foods')
-print('line 34')
 
 #################################################
 # Flask Setup
 #################################################
 
-<<<<<<< Updated upstream
 # print("x new query" * 5)
 # print("x new query")
-=======
 
->>>>>>> Stashed changes
 
 @app.route("/")
 # @app.route("/index")

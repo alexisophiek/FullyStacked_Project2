@@ -11,9 +11,18 @@ import requests
 import csv
 import psycopg2
 from psycopg2 import Error
+import pandas as pd
 
-engine = create_engine('postgresql://postgres:postgres@localhost:5432/USDA_Food')
+
+pguser = input('what is your Postgres username?')
+pw = input('what is your postgres password?')
+engine = create_engine(f'postgresql://{pguser}:{pw}@localhost:5432/USDA_Foods')
+print('line 34')
+
 Base = declarative_base()
+
+DATABASE_URI = 'postgresql://postgres:postgres@localhost:5432/USDA_Foods'
+from sqlalchemy import create_engine
 
 
 #Defining a schema
@@ -304,9 +313,6 @@ class Main (Base):
 
 Main.__table__.create(bind=engine, checkfirst=True)
 
-DATABASE_URI = 'postgresql://postgres:postgres@localhost:5432/USDA_Food'
-from sqlalchemy import create_engine
-
 engine = create_engine(DATABASE_URI)
 
 Base.metadata.create_all(engine)
@@ -315,11 +321,12 @@ def recreate_database():
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
-from sqlalchemy.orm import sessionmaker
 
 Session = sessionmaker(bind=engine)
 
-import pandas as pd
-with open('Project 2\data\CSV_ Files\combined.csv', 'r') as file:
+f_contents = open('data\CSV_Files\combined.csv', 'r')
+
+
+with f_contents as file:
     data_df = pd.read_csv(file)
 data_df.to_sql('main', con=engine, index=True, index_label='id', if_exists='replace')
