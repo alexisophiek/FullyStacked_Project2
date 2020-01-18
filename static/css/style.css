@@ -1,3 +1,18 @@
+
+
+/*CSS FOR MAP TO SHOW */
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#map, body, html {
+  height: 95%;
+}
+
+/*END OF CSS FOR MAP TO SHOW ^*/
+
 .navbar-nav {
   color:#ffffff;
 }
