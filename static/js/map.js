@@ -1,4 +1,4 @@
-var counties = '../data/counties.json'
+var counties = 'data/counties.json'
 
 var myMap = L.map("map", {
   // Portland OR
