@@ -1,7 +1,5 @@
-function myGeo(geo) {
-  var geo = JSON.parse{{geo}};
-}
-
+var geo = {{myGeo}};
+console.log(geo)
 
 var myMap = L.map("map", {
   // OREGON

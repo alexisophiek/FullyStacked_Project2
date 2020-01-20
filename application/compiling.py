@@ -16,6 +16,9 @@ def county(file):
         
 
 county(counties)
+
+myGeo = json.dumps(geo)
+
 # print(geo)
 
 ################################
