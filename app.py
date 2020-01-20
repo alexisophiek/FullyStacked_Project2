@@ -39,17 +39,11 @@ def county():
             geo.append(c)
         return data
 
-
-# print(county())
-# county()
-# print(county())
-
-
 print(geo)
 
 
 @app.route("/")
-# @app.route("/index")
+@app.route("/index")
 def index():
 	# print('line 32  route')
     # """List all available api routes."""
