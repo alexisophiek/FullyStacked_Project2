@@ -19,10 +19,6 @@ pw = input('what is your postgres password?')
 engine = create_engine(f'postgresql://{pguser}:{pw}@localhost:5432/USDA_Foods')
 print('line 34')
 
-Base = declarative_base()
-
-DATABASE_URI = 'postgresql://postgres:postgres@localhost:5432/USDA_Foods'
-from sqlalchemy import create_engine
 
 
 #Defining a schema
@@ -311,9 +307,9 @@ class Main (Base):
         WICSP_12 =Column(Integer)
         PCH_WICSPTH_08_12_12 =Column(Integer)
 
-Main.__table__.create(bind=engine, checkfirst=True)
+Base = declarative_base()
 
-engine = create_engine(DATABASE_URI)
+Main.__table__.create(bind=engine, checkfirst=True)
 
 Base.metadata.create_all(engine)
 
