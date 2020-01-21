@@ -1,6 +1,12 @@
 import os
 import json
-from database import pguser, pw, engine
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
+from sqlalchemy import func
+from sqlalchemy import *
+import sqlalchemy
+
+# from database import pguser, pw, engine
 
 
 
@@ -8,21 +14,22 @@ from database import pguser, pw, engine
 ################################
 # Load in the JSON File
 file = "static/data/counties.json"
-def county(file):
+def county():
     with open(file, 'r') as f:
         data = json.load(f)
         return data
 
-data = county(file)
+data = county()
 
 ################################
 # Open a Query Session
- 
+engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/USDA_Foods')
+
 
 # Read
-# result_set = engine.execute("SELECT county, 'PCT_DIABETES_ADULTS13' FROM main")  
-# for r in result_set:  
-#     print(r)
+result_set = engine.execute("SELECT * FROM main")  
+for r in result_set:  
+    print(r)
 
 
 
