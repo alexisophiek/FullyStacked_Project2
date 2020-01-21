@@ -13,7 +13,7 @@ import sqlalchemy
 
 ################################
 # Load in the JSON File
-file = "static/data/counties.json"
+file = "/static/data/counties.json"
 def county():
     with open(file, 'r') as f:
         data = json.load(f)

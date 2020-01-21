@@ -1,107 +1,80 @@
 var health = 'HEALTH.csv'
-
 var scores = []
-
 var data
-
-var tobe
 var endpoint = '/counties_data'
 
-d3.json(endpoint, function (data) {
-  console.log(data)
-  geo = data
-  var type = data['type']
-  var features = data['features']
-  console.log(type)
+counties_endpoint(endpoint, myMap)
 
-  var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-    maxZoom: 18,
-    id: "mapbox.streets",
-    accessToken: API_KEY
-  });
+// L.control.layers(overlayMaps).addTo(map);
 
-  var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-    maxZoom: 18,
-    id: "mapbox.dark",
-    accessToken: API_KEY
-  });
+// var 
 
-  var counties = L.tileLayer("counties.json", {
-    attribution: 'idk',
-    maxZoom: 18,
-    id: 'mapbox.dark'
+function counties_endpoint(endpoint, myMap){
 
-  })
+   // var counties = L.layerGroup();
 
-  var myMap = L.map("map", {
-    center: [
-      37.09, -95.71
-    ],
-    zoom: 5,
-    layers: [streetmap, counties]
-  });
+      d3.json(endpoint, function(data) {
+
+        // var counties = L.tileLayer(endpoint, {
+        //   attribution: 'idk',
+        //   maxZoom: 9,
+        //   minZoom: 5,
+        //   id: 'mapbox.dark'
+        // }).addTo(myMap)
+
+            var counties = L.geoJson(data, {
+            // L.geoJson(data, {
+
+                // Style each feature (in this case a neighborhood)
+                          style: function(feature) {
+                            return {
+                              color: "white",
+                              fillColor: '#74B6E6',
+                              // fillOpacity: 0.5,
+                              weight: 1.5
+                            };
+                          },
+                
+            }).addTo(myMap)
+
+            // L.control.layers(overlayMaps).addTo(myMap);
+                // layers: [streetmap, counties]
+
+        // createFeatures(data)
+
+            var county_layer = L.geoJSON(data, {
+                onEachFeature: onEachFeature
+            });
+        // createMap(county_layer, streetmap, darkmap, counties, myMap);
+
+            var overlayMaps = {
+                Counties: counties
+              }
+
+          return overlayMaps
+      });
+      // L.control.layers(county_layer).addTo(myMap);
+}
+
+// THIS MARKS THE END OF THE FUNCTION CALLED counties_endpoint()
+// THIS MARKS THE END OF THE FUNCTION CALLED counties_endpoint()
+// THIS MARKS THE END OF THE FUNCTION CALLED counties_endpoint()
 
 
-  var counties = L.geoJson(data, {
-
-    // Style each feature (in this case a neighborhood)
-    style: function (feature) {
-      return {
-        color: "white",
-        fillColor: '#74B6E6',
-        // fillOpacity: 0.5,
-        weight: 1.5
-      };
-    },
-
-  }).addTo(myMap);
-  // layers: [streetmap, counties]
-
-  createFeatures(data)
-  console.log('end of something')
-});
-
-
-function createFeatures(earthquakeData) {
-
-  // Define a function we want to run once for each feature in the features array
-  // Give each feature a popup describing the place and time of the earthquake
-  function onEachFeature(feature, layer) {
+function onEachFeature(feature, layer) {
     layer.bindPopup("<h3>" + feature.properties.place + "</h3>")
-    // "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
   }
 
-  // Create a GeoJSON layer containing the features array on the earthquakeData object
-  // Run the onEachFeature function once for each piece of data in the array
-  var county_layer = L.geoJSON(earthquakeData, {
-    onEachFeature: onEachFeature
-  });
+// function createFeatures(data) {
 
-  // Sending our earthquakes layer to the createMap function
-  createMap(county_layer);
-}
+//   var county_layer = L.geoJSON(data, {
+//     onEachFeature: onEachFeature
+//   });
+//   return county_layer
 
-function createMap(county_layer) {
+//   // createMap(county_layer, streetmap, darkmap);
+// }
 
-
-  // Define a baseMaps object to hold our base layers
-  var baseMaps = {
-    "Street Map": streetmap,
-    "Dark Map": darkmap
-    // "Counties": counties
-  };
-
-  // Create overlay object to hold our overlay layer
-  var overlayMaps = {
-    // Earthquakes: earthquakes
-    Counties: counties
-  };
-
-  L.control.layers(baseMaps, overlayMaps, {
-    collapsed: false
-  }).addTo(myMap);
-}
-
+// L.control.layers(overlayMaps).addTo(map);
+console.log('done')
 

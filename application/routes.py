@@ -2,8 +2,8 @@ from flask import Flask, render_template, redirect, make_response
 from flask import request, render_template, make_response
 from datetime import datetime as dt
 from flask import current_app as app
+import application
 from compiling import county
-
 
 @app.route("/")
 @app.route("/index")
