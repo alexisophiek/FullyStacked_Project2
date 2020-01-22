@@ -10,12 +10,6 @@ from sqlalchemy.sql import *
 import pandas as pd
 
 
-
-pguser = input('what is your Postgres username?')
-# pguser = 'postgres'
-# pw = 'postgres'
-# pw = 'Bl@st0ise18'
-pw = input('what is your postgres password?')
 engine = create_engine(f'postgresql://{pguser}:{pw}@localhost:5432/USDA_Foods')
 print('line 34')
 

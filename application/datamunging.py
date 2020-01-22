@@ -13,14 +13,14 @@ import sqlalchemy
 
 ################################
 # Load in the JSON File
-file="static/data/counties.json"
+file="data/counties.json"
 def county():
     with open(file, 'r') as f:
         data = json.load(f)
         return data
     return data
 
-data = county()
+# data = county()
 
 ################################
 # Open a Query Session
