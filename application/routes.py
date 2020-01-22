@@ -20,7 +20,7 @@ def presentation():
 
 @app.route("/counties_data")
 def counties_data():
-	print('endpoint HIT~~~~~~~')
 	county()
+	# lenny = len(data)
 	return jsonify(data)
 

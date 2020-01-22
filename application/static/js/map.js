@@ -1,7 +1,7 @@
 var health = 'HEALTH.csv'
 var scores = []
 var data
-var endpoint = '/counties_data'
+// var endpoint = "/counties_data"
 
 counties_endpoint(endpoint, myMap)
 
@@ -13,8 +13,8 @@ function counties_endpoint(endpoint, myMap){
 
    // var counties = L.layerGroup();
 
-      d3.json(endpoint, function(data) {
-
+      d3.json("/counties_data", function(data) {
+        console.log(data.length())
         // var counties = L.tileLayer(endpoint, {
         //   attribution: 'idk',
         //   maxZoom: 9,
@@ -75,6 +75,6 @@ function onEachFeature(feature, layer) {
 //   // createMap(county_layer, streetmap, darkmap);
 // }
 
-// L.control.layers(overlayMaps).addTo(map);
+L.control.layers(overlayMaps).addTo(map);
 console.log('done')
 

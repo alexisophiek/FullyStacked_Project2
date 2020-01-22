@@ -22,7 +22,7 @@ def county():
 
 ################################
 # Open a Query Session
-engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/USDA_Foods')
+engine = create_engine(f'postgresql://postgres:Bl@st0ise18@localhost:5432/USDA_Foods')
 
 
 # Read
