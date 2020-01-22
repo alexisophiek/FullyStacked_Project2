@@ -6,7 +6,6 @@ from sqlalchemy import func
 from sqlalchemy import *
 import sqlalchemy
 
-# from database import pguser, pw, engine
 
 
 
@@ -19,7 +18,7 @@ def county():
         data = json.load(f)
         return data
 
-data = county()
+# data = county()
 
 ################################
 # Open a Query Session
