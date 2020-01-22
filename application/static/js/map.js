@@ -1,17 +1,17 @@
-var health = 'HEALTH.csv'
+// var health = 'HEALTH.csv'
 var scores = []
 var data
 // var endpoint = "/counties_data"
 
-counties_endpoint(endpoint, myMap)
+// counties_endpoint(endpoint, myMap)
 
 // L.control.layers(overlayMaps).addTo(map);
 
 // var 
 
-function counties_endpoint(endpoint, myMap){
+function counties_endpoint(endpoint, myMap) {
 
-   // var counties = L.layerGroup();
+  // var counties = L.layerGroup();
 
       d3.json("/counties_data", function(data) {
         console.log(data.length())
@@ -22,38 +22,38 @@ function counties_endpoint(endpoint, myMap){
         //   id: 'mapbox.dark'
         // }).addTo(myMap)
 
-            var counties = L.geoJson(data, {
-            // L.geoJson(data, {
+    var counties = L.geoJson(data, {
+      // L.geoJson(data, {
 
-                // Style each feature (in this case a neighborhood)
-                          style: function(feature) {
-                            return {
-                              color: "white",
-                              fillColor: '#74B6E6',
-                              // fillOpacity: 0.5,
-                              weight: 1.5
-                            };
-                          },
-                
-            }).addTo(myMap)
+      // Style each feature (in this case a neighborhood)
+      style: function (feature) {
+        return {
+          color: "white",
+          fillColor: '#74B6E6',
+          // fillOpacity: 0.5,
+          weight: 1.5
+        };
+      },
 
-            // L.control.layers(overlayMaps).addTo(myMap);
-                // layers: [streetmap, counties]
+    }).addTo(myMap)
 
-        // createFeatures(data)
+    // L.control.layers(overlayMaps).addTo(myMap);
+    // layers: [streetmap, counties]
 
-            var county_layer = L.geoJSON(data, {
-                onEachFeature: onEachFeature
-            });
-        // createMap(county_layer, streetmap, darkmap, counties, myMap);
+    // createFeatures(data)
 
-            var overlayMaps = {
-                Counties: counties
-              }
+    var county_layer = L.geoJSON(data, {
+      onEachFeature: onEachFeature
+    });
+    // createMap(county_layer, streetmap, darkmap, counties, myMap);
 
-          return overlayMaps
-      });
-      // L.control.layers(county_layer).addTo(myMap);
+    var overlayMaps = {
+      Counties: counties
+    }
+
+    return overlayMaps
+  });
+  // L.control.layers(county_layer).addTo(myMap);
 }
 
 // THIS MARKS THE END OF THE FUNCTION CALLED counties_endpoint()
@@ -62,8 +62,8 @@ function counties_endpoint(endpoint, myMap){
 
 
 function onEachFeature(feature, layer) {
-    layer.bindPopup("<h3>" + feature.properties.place + "</h3>")
-  }
+  layer.bindPopup("<h3>" + feature.properties.place + "</h3>")
+}
 
 // function createFeatures(data) {
 
