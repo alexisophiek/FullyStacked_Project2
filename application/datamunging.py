@@ -24,15 +24,14 @@ def county():
 
 ################################
 # Open a Query Session
-engine = create_engine(f'postgresql://postgres:Bl@st0ise18@localhost:5432/USDA_Foods')
+engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/USDA_Foods')
 
 
 # Read
 result_set = engine.execute("SELECT * FROM main")  
 # for r in result_set: 
 new = json.dumps([dict(r) for r in result_set]) 
-# pprint.pprint(new)
-
+# print(new)
 
 
 

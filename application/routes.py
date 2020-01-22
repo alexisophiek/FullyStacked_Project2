@@ -1,8 +1,6 @@
 from flask import Flask, render_template, redirect, make_response
 from flask import request, render_template, make_response
-from datetime import datetime as dt
 from flask import current_app as app
-import application
 from .datamunging import county
 
 @app.route("/")
@@ -21,6 +19,5 @@ def presentation():
 @app.route("/counties_data")
 def counties_data():
 	county()
-	# lenny = len(data)
 	return jsonify(data)
 
