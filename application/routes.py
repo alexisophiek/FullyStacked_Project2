@@ -1,7 +1,10 @@
 from flask import Flask, render_template, redirect, make_response
 from flask import request, render_template, make_response
 from flask import current_app as app
-from .datamunging import county
+from flask import jsonify
+import os
+from .datamunging import pgcall, county
+
 
 @app.route("/")
 @app.route("/index")
@@ -18,6 +21,7 @@ def presentation():
 
 @app.route("/counties_data")
 def counties_data():
-	county()
-	return jsonify(data)
-
+    file = os.path.join('application','static','data','counties.json')
+    pgjson = pgcall()
+    data = county(file, pgjson)
+    return jsonify(data)

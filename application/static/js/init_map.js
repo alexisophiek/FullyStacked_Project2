@@ -33,21 +33,7 @@ function createMap(myMap) {
     // "Counties": counties
   };
 
-  //   var myMap = L.map("map", {  
-  //       center: [
-  //         43.9792797,-120.737257
-  //         // 45.51179, -122.67563
-  //         // 37.09, -95.71
-  //       ],
-  //       zoom: 7,
-  //       layers: [darkmap, streetmap]
-  //       // layers: [darkmap, counties]
-  // });
 
-  // L.control.layers(baseMaps, overlayMaps, {
-  // L.control.layers(baseMaps,  {
-  //   collapsed: false
-  // }).addTo(myMap);
   L.control.layers(baseMaps).addTo(myMap);
 
   return myMap

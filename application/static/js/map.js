@@ -1,4 +1,4 @@
-// var health = 'HEALTH.csv'
+var health = 'HEALTH.csv'
 var scores = []
 var data
 // var endpoint = "/counties_data"

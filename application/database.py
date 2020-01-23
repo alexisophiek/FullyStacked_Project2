@@ -10,8 +10,8 @@ from sqlalchemy.sql import *
 import pandas as pd
 
 
-engine = create_engine(f'postgresql://{pguser}:{pw}@localhost:5432/USDA_Foods')
-print('line 34')
+engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/USDA_Foods')
+print('Loading Engine...')
 
 Base = declarative_base()
 
@@ -21,7 +21,7 @@ class Main (Base):
         __tablename__ = 'main'
         FIPS = Column(Integer, primary_key = true)
         state= Column(String)
-        county= Column(String)
+        NAME = Column(String)
         low_access_store_2010 =Column(Integer)
         LACCESS_POP15 = Column(Integer)
         PCH_LACCESS_POP_10_15_15 =Column(Integer)
