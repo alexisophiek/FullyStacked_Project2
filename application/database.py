@@ -316,7 +316,8 @@ def recreate_database():
 
 Session = sessionmaker(bind=engine)
 
-f_contents = open('static\data\CSV_Files\combined.csv', 'r')
+# f_contents = open('static\data\CSV_Files\combined.csv', 'r')
+f_contents = open('static/data/CSV_Files/combined.csv', 'r')
 
 
 with f_contents as file:
