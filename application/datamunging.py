@@ -12,7 +12,8 @@ import sqlalchemy
 ################################
 # Open a Query Session
 def pgcall():
-    engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/USDA_Foods')
+    # engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/USDA_Foods')
+    engine = create_engine(f'postgresql://postgres:Bl@st0ise18@localhost:5432/USDA_Foods')
     # From PostgresSQL
     result_set = engine.execute("SELECT * FROM main")  
     # for r in result_set: 
@@ -29,7 +30,7 @@ pgcall()
 file = os.path.join('application','static','data','counties.json')
 
 def county(file, pgjson):
-    with open(file, 'r') as f:
+    with open(file, 'r', encoding = "ISO-8859-1") as f:
         data = json.load(f)
     for each in data["features"]:
         # print(each)
