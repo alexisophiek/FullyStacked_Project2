@@ -2,8 +2,10 @@ from application import create_app
 
 app = create_app()
 
+# file = "application/static/data/counties.json"
+
+
 if __name__ == '__main__':
-	# app.run(debug=True)
 	app.run(host='0.0.0.0')
 
 

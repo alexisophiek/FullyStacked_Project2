@@ -1,7 +1,7 @@
 // var health = 'HEALTH.csv'
 var scores = []
 var data
-// var endpoint = "/counties_data"
+
 
 // counties_endpoint(endpoint, myMap)
 
@@ -9,12 +9,13 @@ var data
 
 // var 
 
-function counties_endpoint(endpoint, myMap) {
+function counties_endpoint() {
+  var endpoint = "/counties_data"
+// function counties_endpoint(endpoint, myMap) {
 
-  // var counties = L.layerGroup();
-
-      d3.json("/counties_data", function(data) {
-        console.log(data.length())
+      d3.json(endpoint, function(data) {
+      // d3.json("/counties_data", function(data) {
+        // console.log(data.length())
         // var counties = L.tileLayer(endpoint, {
         //   attribution: 'idk',
         //   maxZoom: 9,
@@ -51,10 +52,15 @@ function counties_endpoint(endpoint, myMap) {
       Counties: counties
     }
 
-    return overlayMaps
+          L.control.layers(overlayMaps).addTo(myMap);
+
+
   });
+      // L.control.layers(overlayMaps).addTo(myMap);
+    // return overlayMaps
   // L.control.layers(county_layer).addTo(myMap);
 }
+// return overlayMaps
 
 // THIS MARKS THE END OF THE FUNCTION CALLED counties_endpoint()
 // THIS MARKS THE END OF THE FUNCTION CALLED counties_endpoint()
@@ -75,6 +81,8 @@ function onEachFeature(feature, layer) {
 //   // createMap(county_layer, streetmap, darkmap);
 // }
 
-L.control.layers(overlayMaps).addTo(map);
+counties_endpoint()
+
+// L.control.layers(overlayMaps).addTo(myMap);
 console.log('done')
 
