@@ -7,12 +7,12 @@ from sqlalchemy import func
 from sqlalchemy import *
 import sqlalchemy
 
-
+db_string = os.environ.get("DATABASE_URL")
 
 ################################
 # Open a Query Session
 def pgcall():
-    engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/USDA_Foods')
+    engine = create_engine(db_string)
     # From PostgresSQL
     result_set = engine.execute("SELECT * FROM main")  
     # for r in result_set: 

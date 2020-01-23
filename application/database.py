@@ -9,14 +9,14 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import *
 import pandas as pd
 
-
-engine = create_engine(f'postgresql://postgres:postgres@localhost:5432/USDA_Foods')
-print('Loading Engine...')
+db_string = os.environ.get("DATABASE_URL")
+engine = create_engine(db_string)
+# print('Loading Engine...')
 
 Base = declarative_base()
 
 
-#Defining a schema
+#Defining Schema
 class Main (Base):
         __tablename__ = 'main'
         FIPS = Column(Integer, primary_key = true)
