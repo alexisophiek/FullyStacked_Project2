@@ -7,12 +7,12 @@ from sqlalchemy import func
 from sqlalchemy import *
 import sqlalchemy
 
-# db_string = os.environ.get("DATABASE_URL")
+db_string = os.environ.get("DATABASE_URL")
 
 ################################
 # Open a Query Session
 def pgcall():
-    engine = create_engine(f'postgres://sgbwpichcpvxtd:bf4d337f0f30d387d741df43d5e2a6d198fd60fa7abbba613abd6687a3066c33@ec2-3-224-165-85.compute-1.amazonaws.com:5432/deq8hmr80e27ob')
+    engine = create_engine(db_string)
     # From PostgresSQL
     result_set = engine.execute("SELECT * FROM main")  
     # for r in result_set: 
