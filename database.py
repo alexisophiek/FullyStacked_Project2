@@ -317,8 +317,10 @@ def recreate_database():
 
 Session = sessionmaker(bind=engine)
 
-f_contents = open(os.path.join('static', 'data','CSV_Files','combined.csv'))
+f_contents = open(os.path.join('application','static','data','CSV_Files','combined.csv'))
+print('Loading Schema...')
 
 with f_contents as file:
     data_df = pd.read_csv(file)
 data_df.to_sql('main', con=engine, index=True, index_label='id', if_exists='replace')
+print('Loading Complete.')
