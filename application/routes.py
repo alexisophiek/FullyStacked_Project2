@@ -16,7 +16,7 @@ def map():
     return render_template('map.html', title="Map")
 
 @app.route("/visualize")
-def map():
+def visualize():
     return render_template('visualize.html', title="Visualizations")
 
 @app.route("/presentation")
