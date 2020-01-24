@@ -177,3 +177,189 @@ iframe {
 
 
 
+.text {
+  font: 30px verdana;
+  /* font-weight: bold; */
+  fill: rgb(94, 73, 73);
+  text-anchor: left;
+
+}
+.chart::before {
+  position: absolute;
+  font-family: 10px verdana;
+  top: 50px;
+  left: 300px;
+  z-index: -1;
+  display: block;
+  width: 400px;
+  height: 300px;
+  content: " ";
+  background-attachment: 'oregon.png';
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: cover;
+  opacity: 0.3;
+}
+
+.tooltip {
+  position: absolute;
+  width: 80px;
+  /* height: 80px; */
+  padding: 5px;
+  padding-top: 5px;
+  font: 10px verdana;
+  font-weight: lighter;
+  color: white;
+  text-align: center;
+  background:rgb(49, 43, 43);
+  border: 0;
+  border-radius: 5px;
+}
+
+
+text.axis-text{
+  font: 20px verdana;
+  font-weight: bold;
+  fill: rgb(94, 73, 73);
+  text-anchor: middle;
+}
+
+text.active
+{
+  font: 20px verdana;
+  font-weight: bold;
+  fill: rgb(59, 56, 56);
+  text-anchor: middle;
+}
+.graph-svg-component {
+  outline: tick;
+  /* stroke: rgb(100, 97, 97); */
+}
+text.inactive
+{
+  font: 20px verdana;
+  fill: rgb(138, 128, 128);
+  text-anchor: middle;
+}
+
+.axis-text {
+  font: 20px verdana;
+  font-weight: bold;
+  fill: rgb(59, 56, 56);
+  text-anchor: middle;
+}
+
+.active {
+  font-weight: bold;
+  font: 20px verdana;
+  fill: #000;
+  fill: rgb(17, 17, 82);
+  transition: fill 0.3s ease-out;
+  text-anchor: middle;
+}
+
+.inactive {
+  font-weight: lighter;
+  font: 10px verdana;
+  fill: gray;
+  transition: fill 0.3s ease-out;
+  text-anchor: middle;
+}
+
+.inactive:hover {
+  fill: #4e1224;
+  cursor: pointer;
+}
+
+/* D3 vis
+.text {
+  font: 30px verdana;
+  font-weight: bold;
+  fill: rgb(94, 73, 73);
+  text-anchor: left;
+
+}
+.chart::before {
+  position: absolute;
+  font-family: 10px verdana;
+  top: 50px;
+  left: 300px;
+  z-index: -1;
+  display: block;
+  width: 400px;
+  height: 300px;
+  content: " ";
+  background-attachment: 'oregon.png';
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: cover;
+  opacity: 0.3;
+}
+
+.tooltip {
+  position: absolute;
+  width: 80px;
+  padding: 5px;
+  padding-top: 5px;
+  font: 10px verdana;
+  font-weight: lighter;
+  color: white;
+  text-align: center;
+  background:rgb(49, 43, 43);
+  border: 0;
+  border-radius: 5px;
+}
+
+
+text.axis-text{
+  font: 20px verdana;
+  font-weight: bold;
+  fill: rgb(94, 73, 73);
+  text-anchor: middle;
+}
+
+text.active
+{
+  font: 20px verdana;
+  font-weight: bold;
+  fill: rgb(59, 56, 56);
+  text-anchor: middle;
+}
+.graph-svg-component {
+  outline: tick;
+}
+text.inactive
+{
+  font: 20px verdana;
+  fill: rgb(138, 128, 128);
+  text-anchor: middle;
+}
+
+.axis-text {
+  font: 20px verdana;
+  font-weight: bold;
+  fill: rgb(59, 56, 56);
+  text-anchor: middle;
+}
+
+.active {
+  font-weight: bold;
+  font: 20px verdana;
+  fill: #000;
+  fill: rgb(17, 17, 82);
+  transition: fill 0.3s ease-out;
+  text-anchor: middle;
+}
+
+.inactive {
+  font-weight: lighter;
+  font: 10px verdana;
+  fill: gray;
+  transition: fill 0.3s ease-out;
+  text-anchor: middle;
+}
+
+.inactive:hover {
+  fill: #4e1224;
+  cursor: pointer;
+}
