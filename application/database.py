@@ -8,8 +8,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import *
 import pandas as pd
+import os
 
-engine = create_engine(f'postgres://sgbwpichcpvxtd:bf4d337f0f30d387d741df43d5e2a6d198fd60fa7abbba613abd6687a3066c33@ec2-3-224-165-85.compute-1.amazonaws.com:5432/deq8hmr80e27ob')
+
+db = os.environ.get('DATABASE_URL')
+engine = create_engine(db)
 # engine = create_engine(db_string)
 print('Loading Engine...')
 
@@ -314,8 +317,7 @@ def recreate_database():
 
 Session = sessionmaker(bind=engine)
 
-f_contents = open('static\data\CSV_Files\combined.csv', 'r')
-
+f_contents = open(os.path.join('static', 'data','CSV_Files','combined.csv'))
 
 with f_contents as file:
     data_df = pd.read_csv(file)
