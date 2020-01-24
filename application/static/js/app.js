@@ -180,7 +180,7 @@ d3.csv("combined.csv").then(function (data, err) {
         .attr("x", 0 - (height / 2))
         .attr("dy", "1em")
         .classed("axis-text", true)
-        .text("Adult Obesity Rate");
+        .text("Adult Obesity Rate(%)");
 
 
     //   // updateToolTip function above csv import
