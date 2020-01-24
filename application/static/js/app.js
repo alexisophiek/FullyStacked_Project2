@@ -163,14 +163,14 @@ d3.csv("data.csv").then(function (data, err) {
         .attr("y", 20)
         .attr("value", "FFR14") // value to grab for event listener
         .classed("active", true)
-        .text("Fast Food Restaurants (per 1,000 individuals)")
+        .text("Fast Food Restaurants")
 
     var GROC14 = labelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 40)
         .attr("value", "GROC14") // value to grab for event listener
         .classed("inactive", true)
-        .text("Grocery stores (per 1,000 individuals)")
+        .text("Grocery Stores")
 
     //   // append y axis
 
