@@ -25,7 +25,7 @@ var myMap = L.map("map", {
   // layers: [darkmap, counties]
 });
 
-function createMap(myMap) {
+function createMap(myMap, counties) {
 
   var baseMaps = {
     "Street Map": streetmap,
@@ -48,11 +48,11 @@ function createMap(myMap) {
   // L.control.layers(baseMaps,  {
   //   collapsed: false
   // }).addTo(myMap);
-  L.control.layers(baseMaps).addTo(myMap);
+  L.control.layers(baseMaps, counties).addTo(myMap);
 
   return myMap
 }
 
 
-createMap(myMap);
+// createMap(myMap);
 // createMap(county_layer, streetmap, darkmap, counties, myMap);
