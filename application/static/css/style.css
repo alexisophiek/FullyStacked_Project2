@@ -4,6 +4,9 @@
 body {
   padding: 0;
   margin: 0;
+  color:white;
+  /* font-family: Courier, Arial, Helvetica, sans-serif; */
+
 }
 
 #map {
@@ -30,10 +33,18 @@ iframe {
 }
 /*END CSS FOR GOOGLE SLIDES IFRAME*/
 
-nav {
+.navbar {
   z-index: 9999999;
-  background: transparent;
+  background: rgb(107, 107, 107);
+  color: white;
+  opacity:.3;
 }
+
+.navbar-nav .collapse .nav-link{
+  color: white;
+  
+}
+
 .footer {
     position: fixed;
     left: 0;
@@ -42,15 +53,16 @@ nav {
     width: 100%;
     border-top-style: solid;
     border-color:white;
+    color: white;
     background-color:transparent;
     text-align: center;
     z-index: 9999999;
 }
-/* .footer a {
-    text-decoration: none;
-    color: white;
-    font-size:10px;
-} */
+
+.footer a {
+  color: white;
+}
+
 
 .container {
   text-align:center;
