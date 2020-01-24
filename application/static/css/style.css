@@ -87,8 +87,9 @@ iframe {
 }
 /*END CSS FOR GOOGLE SLIDES IFRAME*/
 
-nav {
-  z-index: 9999999;
+.navbar .navbar-brand {
+  color: white;
+  font-size: 14px;
 }
 .footer {
     position: fixed;
