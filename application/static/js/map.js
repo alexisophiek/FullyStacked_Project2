@@ -1,7 +1,7 @@
 // counties_endpoint(endpoint, myMap)
 function styles(feature) {
   var prop = feature.properties
-  var val = prop.COUNTY
+  var val = prop.PCT_OBESE_ADULTS13
 
   val = parseInt(val)
   console.log(val)
