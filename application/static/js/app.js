@@ -31,15 +31,15 @@ svg.append("text")
 
 
 // // Initial Params
-var chosenXAxis = "FFR14"
+var chosenXAxis = "FFRPTH14"
 console.log(chosenXAxis)
 
 // // function used for updating x-scale var upon click on axis label
 function xScale(data, chosenXAxis) {
     // create scales
     var xLinearScale = d3.scaleLinear()
-        .domain([d3.min(data, d => d[chosenXAxis]) + 10,
-        d3.max(data, d => d[chosenXAxis])+20
+        .domain([d3.min(data, d => d[chosenXAxis]),
+        d3.max(data, d => d[chosenXAxis])
         ])
         .range([5, width]);
 
@@ -73,7 +73,7 @@ function renderCircles(circlesGroup, newXScale, chosenXaxis) {
 // // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, circlesGroup) {
 
-    if (chosenXAxis === "FFR14") {
+    if (chosenXAxis === "FFRPTH14") {
         var label = "Fast Food Restaurants Count";
     }
     else {
@@ -102,7 +102,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 }
 
 // // Retrieve data from the CSV file and execute everything below
-d3.csv("data.csv").then(function (data, err) {
+d3.csv("combined.csv").then(function (data, err) {
     if (err) throw err;
         if (data["State"] == [data.State = "OR"]) {
          return data
@@ -110,9 +110,9 @@ d3.csv("data.csv").then(function (data, err) {
         console.log(data)
       // parse data
     data.forEach(function (data) {
-        data.FFR14 = +data.FFR14 
+        data.FFRPTH14 = +data.FFRPTH14 
         data.PCT_OBESE_ADULTS13 = +data.PCT_OBESE_ADULTS13;
-        data.GROC14 = +data.GROC14;
+        data.GROCPTH14 = +data.GROCPTH14;
     });
 
     //   // xLinearScale function above csv import
@@ -158,19 +158,19 @@ d3.csv("data.csv").then(function (data, err) {
     var labelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${width / 2}, ${height + 20})`);
 
-    var FFR14 = labelsGroup.append("text")
+    var FFRPTH14 = labelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 20)
-        .attr("value", "FFR14") // value to grab for event listener
+        .attr("value", "FFRPTH14") // value to grab for event listener
         .classed("active", true)
-        .text("Fast Food Restaurants (per 1,000 individuals)")
+        .text("Fast Food Restaurants (1,000/pop)")
 
-    var GROC14 = labelsGroup.append("text")
+    var GROCPTH14 = labelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 40)
-        .attr("value", "GROC14") // value to grab for event listener
+        .attr("value", "GROCPTH14") // value to grab for event listener
         .classed("inactive", true)
-        .text("Grocery stores (per 1,000 individuals)")
+        .text("Grocery stores (1,000/pop)")
 
     //   // append y axis
 
@@ -209,19 +209,19 @@ d3.csv("data.csv").then(function (data, err) {
                 //         // changes classes to change bold text
  
 
-                if (chosenXAxis === "FFR14") {
-                    FFR14
+                if (chosenXAxis === "FFRPTH14") {
+                    FFRPTH14
                         .classed("active", true)
                         .classed("inactive", false);
-                    GROC14
+                    GROCPTH14
                         .classed("active", false)
                         .classed("inactive", true);
                 }
                 else {
-                    FFR14
+                    FFRPTH14
                         .classed("active", false)
                         .classed("inactive", true);
-                    GROC14
+                    GROCPTH14
                         .classed("active", true)
                         .classed("inactive", false);
                 }
