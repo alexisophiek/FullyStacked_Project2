@@ -223,6 +223,12 @@ text.inactive
   fill: rgb(138, 128, 128);
   text-anchor: middle;
 }
+.title-text {
+  font: 25px verdana;
+  /* font-weight: bold; */
+  fill: rgb(94, 73, 73);
+  font-weight: bold
+}
 
 .axis-text {
   font: 20px verdana;
