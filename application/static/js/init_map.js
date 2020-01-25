@@ -20,7 +20,7 @@ var myMap = L.map("map", {
   ],
   zoom: 7,
   layers: [darkmap]
-  layers: [darkmap, counties]
+  // layers: [darkmap, counties]
 });
 
 function createMap(myMap, counties) {
@@ -28,7 +28,7 @@ function createMap(myMap, counties) {
   var baseMaps = {
     "Street Map": streetmap,
     "Dark Map": darkmap
-    "Counties": counties
+    // "Counties": counties
   };
 
   L.control.layers(baseMaps, counties).addTo(myMap);

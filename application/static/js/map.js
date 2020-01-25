@@ -35,6 +35,23 @@ function counties_endpoint(){
 
     }
 
+// function onEachFeature(feature, layer) {
+//             var popupContent = "<div>County: " + feature.properties.NAME+
+//             "</br>Obesity Rate: " + feature.properties.PCT_OBESE_ADULTS13+
+//             "National Avg Obesity Rate: " + feature.properties.natavgobese +
+//             "</br>Diabetes Rate: "+feature.properties.PCT_DIABETES_ADULTS13+
+//             "National Avg Diabetes Rate: " + feature.properties.natavgdiab +
+//             "</br>Overall Low Access to Store: " +feature.properties.PCT_LACCESS_POP15+
+//             "</br>SNAP Participants with Low Access to Store: " +feature.properties.PCT_LACCESS_SNAP15+
+//             "</br>Median Household Income: " +feature.properties.MEDHHINC15+
+//             "National Avg Household Income " + feature.properties.natavgincome 
+//             "</div";
+//             layer.bindPopup(popupContent)
+// }
+
+counties_endpoint()
+console.log('end')
+
 function onEachFeature(feature, layer) {
             var popupContent = "<div>County: " + feature.properties.NAME+
             "</br>Obesity Rate: " + feature.properties.PCT_OBESE_ADULTS13+
@@ -48,7 +65,4 @@ function onEachFeature(feature, layer) {
             "</div";
             layer.bindPopup(popupContent)
 }
-
-counties_endpoint()
-
 createMap(myMap)

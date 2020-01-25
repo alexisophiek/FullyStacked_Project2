@@ -1,16 +1,11 @@
 /*CSS FOR MAP TO SHOW */
-
 body {
   padding: 0;
   margin: 0;
-  color:white;
-  /* font-family: Courier, Arial, Helvetica, sans-serif; */
-
 }
 
-#map {
+#map, body, html {
   height: 100vh;
-  z-index: 1;
 }
 
 /*END OF CSS FOR MAP TO SHOW ^*/
@@ -31,135 +26,55 @@ iframe {
 /*END CSS FOR GOOGLE SLIDES IFRAME*/
 
 /* NAVBAR STYLE */
-.navbar {
+body .navbar-light .navbar-nav .nav-link {
+  color:#353535;
+  font-size: 18px;
+
+}
+body .navbar {
   z-index: 9999999;
-  background: rgb(107, 107, 107);
-  color: white;
+  background: white;
   opacity:.3;
 }
 
-#navbarNavAltMarkup .navbar-nav .nav-link {
-  color: white;
-  font-size: 14px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+body .navbar-light .navbar-nav .nav-link:hover {
+  color: #ffa600;
+  font-size: 18px;
+}
+
+/* .container { */
+  /* text-align:center; */
+  /* color: white; */
 }
 
 /* END NAVBAR STYLE */
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding:5px;
+  width: 100%;
+  background-color:white;
+  opacity:.3;
+  text-align: center;
+  z-index: 9999999;
 
+}
 /*FOOTER STYLE*/
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    padding:5px;
-    width: 100%;
-    border-top-style: solid;
-    border-color:white;
-    background-color:transparent;
-    text-align: center;
-    z-index: 9999999;
-}
-
-.footer a {
-  color: white;
+  color:#353535;
+  font-size:14px;
 }
 
 
-
-.text {
-  font: 30px verdana;
-  /* font-weight: bold; */
-  fill: rgb(94, 73, 73);
-  text-anchor: left;
-
-}
-.chart::before {
-  position: absolute;
-  font-family: 10px verdana;
-  top: 50px;
-  left: 300px;
-  z-index: -1;
-  display: block;
-  width: 400px;
-  height: 300px;
-  content: " ";
-  background-attachment: 'oregon.png';
-  background-repeat: no-repeat;
-  background-position: 100% 0;
-  background-size: cover;
-  opacity: 0.3;
+.container {
+text-align:center;
+color: white;
 }
 
-.tooltip {
-  position: absolute;
-  width: 80px;
-  /* height: 80px; */
-  padding: 5px;
-  padding-top: 5px;
-  font: 10px verdana;
-  font-weight: lighter;
-  color: white;
-  text-align: center;
-  background:rgb(49, 43, 43);
-  border: 0;
-  border-radius: 5px;
+#chart_body {
+  background-image: linear-gradient(to bottom right, #d4d4d4, #202020);
 }
-
-
-text.axis-text{
-  font: 20px verdana;
-  font-weight: bold;
-  fill: rgb(94, 73, 73);
-  text-anchor: middle;
-}
-
-text.active
-{
-  font: 20px verdana;
-  font-weight: bold;
-  fill: rgb(59, 56, 56);
-  text-anchor: middle;
-}
-.graph-svg-component {
-  outline: tick;
-  /* stroke: rgb(100, 97, 97); */
-}
-text.inactive
-{
-  font: 20px verdana;
-  fill: rgb(138, 128, 128);
-  text-anchor: middle;
-}
-
-.axis-text {
-  font: 20px verdana;
-  font-weight: bold;
-  fill: rgb(59, 56, 56);
-  text-anchor: middle;
-}
-
-.active {
-  font-weight: bold;
-  font: 20px verdana;
-  fill: #000;
-  fill: rgb(17, 17, 82);
-  transition: fill 0.3s ease-out;
-  text-anchor: middle;
-}
-
-.inactive {
-  font-weight: lighter;
-  font: 10px verdana;
-  fill: gray;
-  transition: fill 0.3s ease-out;
-  text-anchor: middle;
-}
-
-.inactive:hover {
-  fill: #4e1224;
-  cursor: pointer;
-}
-
 /* * D3 vis */
 .text {
   font: 30px verdana;
@@ -225,7 +140,6 @@ text.inactive
 }
 .title-text {
   font: 20px verdana;
-  /* font-weight: bold; */
   fill: rgb(94, 73, 73);
   font-weight: bold
 }
@@ -257,4 +171,4 @@ text.inactive
 .inactive:hover {
   fill: #4e1224;
   cursor: pointer;
-}
+} 
