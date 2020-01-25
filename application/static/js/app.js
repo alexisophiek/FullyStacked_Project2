@@ -177,7 +177,7 @@ d3.csv("combined.csv").then(function (data, err) {
         .attr("transform", `translate(${width / 2}, ${height + 20})`);
 
     var FFRPTH14 = labelsGroup.append("text")
-        .attr("x", 200)
+        .attr("x", 250)
         .attr("y", 30)
         .attr("value", "FFRPTH14") // value to grab for event listener
         .classed("active", true)
@@ -191,7 +191,7 @@ d3.csv("combined.csv").then(function (data, err) {
         .text("Grocery Stores")
 
     var CONVSPTH14 = labelsGroup.append("text")
-        .attr("x", -200)
+        .attr("x", -220)
         .attr("y", 30)
         .attr("value", "CONVSPTH14") // value to grab for event listener
         .classed("inactive", true)
