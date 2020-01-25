@@ -1,6 +1,8 @@
+var svgWidth = window.innerWidth;
+var svgHeight = window.innerHeight;
 
-var svgWidth =600;
-var svgHeight = 500;
+// var svgWidth =600;
+// var svgHeight = 500;
 
 var margin = {
     top: 20,
@@ -24,22 +26,16 @@ var svg = d3
 var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top * 3})`);
 
-// svg.append("text")
-//     .attr("x", (width / 1.8))
-//     .attr("y", 0 + (margin.top))
-
 chartGroup.append("text")
     .attr("x", (width/2))             
     .attr("y", (10 - margin.top))
     .text("Oregon Counties: Obesity and Food Availability")
     .classed("title-text", true)
     .attr("text-anchor", "middle")  
-    // .style("text-decoration", "underline")  
 
 // // Initial Params
 var chosenXAxis = "POVRATE15"
 var chosenXAxis = "GROCPTH14"
-console.log(chosenXAxis)
 
 // // function used for updating x-scale var upon click on axis label
 function xScale(data, chosenXAxis) {
@@ -112,11 +108,10 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 }
 
 // // Retrieve data from the CSV file and execute everything below
-d3.csv("combined.csv").then(function (data){
+d3.csv("static/data/CSV_Files/combined.csv", function (data) {
     if (data["State"] == [data.State = "OR"]) {
         return data.State == "OR"
     }
-    console.log(data)
     // parse data
     data.forEach(function (data) {
         data.POVRATE15 = +data.POVRATE15
@@ -163,7 +158,6 @@ d3.csv("combined.csv").then(function (data){
         .attr("cy", d => yLinearScale(d.PCT_OBESE_ADULTS13))
         .attr("r", 5)         // .attr("fill", "green")
         .attr("opacity", ".7")
-        // .style("fill", function (data) { return color(data.state == "OR") })
         .style("stroke", "black");
 
     //   // Create group for  2 x- axis labels
@@ -212,7 +206,6 @@ d3.csv("combined.csv").then(function (data){
             if (value !== chosenXAxis) {
                 //         // replaces chosenXAxis with value
                 chosenXAxis = value;
-                // console.log(chosenXAxis)
                 //         // functions here found above csv import
                 // updates x scale for new data
                 xLinearScale = xScale(data, chosenXAxis);
@@ -265,11 +258,6 @@ d3.csv("combined.csv").then(function (data){
 
                 }
             }
-        }
-    )}
-).catch(function (error) {
-            console.log(error)
         })
-
-
+});
 
