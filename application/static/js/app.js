@@ -17,21 +17,29 @@ var height = svgHeight - margin.top - margin.bottom;
 var svg = d3
     .select(".chart")
     .append("svg")
-    .attr("width", svgWidth*2)
-    .attr("height", svgHeight*2);
+    .attr("width", svgWidth * 2)
+    .attr("height", svgHeight * 2);
 
 // Append an SVG group
 var chartGroup = svg.append("g")
-    .attr("transform", `translate(${margin.left}, ${margin.top*3})`);
+    .attr("transform", `translate(${margin.left}, ${margin.top * 3})`);
 
-svg.append("text")
-    .attr("x", (width/1.8))
-    .attr("y", 0 + (margin.top))
+// svg.append("text")
+//     .attr("x", (width / 1.8))
+//     .attr("y", 0 + (margin.top))
 
+chartGroup.append("text")
+    .attr("x", (width / 2))             
+    .attr("y", 0 - (margin.top / 2))
+    .text("Obesity (%) and Food Availability (per 1,000)")
+    .classed("title-text", true)
+    .attr("text-anchor", "middle")  
+    // .style("text-decoration", "underline")  
 
 
 // // Initial Params
 var chosenXAxis = "FFRPTH14"
+var chosenXAxis = "GROCPTH14"
 console.log(chosenXAxis)
 
 // // function used for updating x-scale var upon click on axis label
@@ -74,18 +82,21 @@ function renderCircles(circlesGroup, newXScale, chosenXaxis) {
 function updateToolTip(chosenXAxis, circlesGroup) {
 
     if (chosenXAxis === "FFRPTH14") {
-        var label = "Fast Food Restaurants Count";
+        var label = "# Fast Food Restaurants";
+    }
+    else if (chosenXAxis === "GROCPTH14") {
+        var label = "# Grocery Stores"
     }
     else {
-        var label = "Grocery stores Count"
-;
+        var label = "# Convenience Stores"
     }
+    var formatDecimal = d3.format(".1f")
 
     var toolTip = d3.tip()
         .attr("class", "tooltip")
         .offset([80, -60])
         .html(function (d) {
-            return (`${d.County}<br> ${d.State}`);
+            return (`${d.County}, ${d.State} <br> Obesity Rate: ${d.PCT_OBESE_ADULTS13}%`);
         });
 
     circlesGroup.call(toolTip);
@@ -104,15 +115,17 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 // // Retrieve data from the CSV file and execute everything below
 d3.csv("combined.csv").then(function (data, err) {
     if (err) throw err;
-        if (data["State"] == [data.State = "OR"]) {
-         return data
-            }
-        console.log(data)
-      // parse data
+    if (data["State"] == [data.State = "OR"]) {
+        return data.State == "OR"
+    }
+    console.log(data)
+    // parse data
     data.forEach(function (data) {
-        data.FFRPTH14 = +data.FFRPTH14 
+        data.FFRPTH14 = +data.FFRPTH14
         data.PCT_OBESE_ADULTS13 = +data.PCT_OBESE_ADULTS13;
         data.GROCPTH14 = +data.GROCPTH14;
+        data.CONVSPTH14 = +data.CONVSPTH14
+        data.close = +data.close;
     });
 
     //   // xLinearScale function above csv import
@@ -132,60 +145,71 @@ d3.csv("combined.csv").then(function (data, err) {
         .classed("x-axis", true)
         .attr("transform", `translate(0, ${height})`)
         .call(bottomAxis);
-        
+
     //   // append y axis
     chartGroup.append("g")
         .call(leftAxis)
-        
+
 
     var color = d3.scaleOrdinal()
-            .domain(["FFRPTH14", "GROCPTH14"])
-            .range(["#c0ede3","#36072f"])
-    
-        // Add dots
-    var circlesGroup = chartGroup.selectAll("circle")
-            .data(data)
-            .enter().append("circle")
-            .attr("cx", d => xLinearScale(d[chosenXAxis]))
-            .attr("cy", d => yLinearScale(d.PCT_OBESE_ADULTS13))
-            .attr("r", 7)         // .attr("fill", "green")
-            .attr("opacity", ".3")
-            .style("fill", function (data) { return color(data.state == "OR") })
-            .style("stroke", "black");
+        .domain(["FFRPTH14", "GROCPTH14"])
+        .range(["#ffffff", "#8B0000"])
 
+    // Add dots
+    var circlesGroup = chartGroup.selectAll("circle")
+        .data(data)
+        .enter().append("circle")
+        .attr("cx", d => xLinearScale(d[chosenXAxis]))
+        .attr("cy", d => yLinearScale(d.PCT_OBESE_ADULTS13))
+        .attr("r", 1)         // .attr("fill", "green")
+        .attr("opacity", ".3")
+        .style("fill", function (data) { return color(data.state == "OR") })
+        .style("stroke", "black");
+
+    circlesGroup.filter(function (data) { return (data.state == 'OR') })
+        .attr("r", 8)
+        .style("stroke", "black")
+        .text('OR')
+        .style('text-actve', true)
 
     //   // Create group for  2 x- axis labels
     var labelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${width / 2}, ${height + 20})`);
 
     var FFRPTH14 = labelsGroup.append("text")
-        .attr("x", 0)
-        .attr("y", 20)
+        .attr("x", 200)
+        .attr("y", 30)
         .attr("value", "FFRPTH14") // value to grab for event listener
         .classed("active", true)
-        .text("Fast Food Restaurants (1,000/pop)")
+        .text("Fast Food Restaurants")
 
     var GROCPTH14 = labelsGroup.append("text")
         .attr("x", 0)
-        .attr("y", 40)
+        .attr("y", 30)
         .attr("value", "GROCPTH14") // value to grab for event listener
         .classed("inactive", true)
-        .text("Grocery stores (1,000/pop)")
+        .text("Grocery Stores")
+
+    var CONVSPTH14 = labelsGroup.append("text")
+        .attr("x", -200)
+        .attr("y", 30)
+        .attr("value", "CONVSPTH14") // value to grab for event listener
+        .classed("inactive", true)
+        .text("Convenience Stores")
 
     //   // append y axis
 
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
+        .attr("y", 30 - margin.left)
         .attr("x", 0 - (height / 2))
         .attr("dy", "1em")
         .classed("axis-text", true)
-        .text("Adult Obesity Rate(%)");
+        .text("Adult Obesity Rate (%)");
 
 
     //   // updateToolTip function above csv import
     var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
-    
 
     //   // x axis labels event listener
     labelsGroup.selectAll("text")
@@ -193,7 +217,6 @@ d3.csv("combined.csv").then(function (data, err) {
             // get value of selection
             var value = d3.select(this).attr("value");
             if (value !== chosenXAxis) {
-
                 //         // replaces chosenXAxis with value
                 chosenXAxis = value;
                 // console.log(chosenXAxis)
@@ -207,7 +230,7 @@ d3.csv("combined.csv").then(function (data, err) {
                 //         // updates tooltips with new info
                 circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
                 //         // changes classes to change bold text
- 
+
 
                 if (chosenXAxis === "FFRPTH14") {
                     FFRPTH14
@@ -216,17 +239,45 @@ d3.csv("combined.csv").then(function (data, err) {
                     GROCPTH14
                         .classed("active", false)
                         .classed("inactive", true);
+
+                    CONVSPTH14
+                        .classed("active", false)
+                        .classed("inactive", true);
                 }
-                else {
+                else if (chosenXAxis === "GROCPTH14") {
                     FFRPTH14
                         .classed("active", false)
                         .classed("inactive", true);
+                    
+                    CONVSPTH14
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    
                     GROCPTH14
                         .classed("active", true)
                         .classed("inactive", false);
+
+                    
+                } else {
+                    GROCPTH14
+                        .classed("active", false)
+                        .classed("inactive", true);
+                    CONVSPTH14
+                        .classed("active", true)
+                        .classed("inactive", false);
+
+                    FFRPTH14
+                        .classed("active", false)
+                        .classed("inactive", true);
+
+
+
                 }
             }
+        }
+    )}
+).catch(function (error) {
+            console.log(error)
         })
-}).catch(function (error) {
-    console.log(error)
-})
+
+
