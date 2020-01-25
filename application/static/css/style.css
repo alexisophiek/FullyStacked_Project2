@@ -8,6 +8,7 @@ body {
   height: 100vh;
 }
 
+
 /*END OF CSS FOR MAP TO SHOW ^*/
 /*CSS FOR GOOGLE SLIDES IFRAME*/
 iframe {
@@ -69,12 +70,15 @@ footer {
 .container h1 {
 text-align:center;
 color: rgb(255, 199, 46);
-font-size: 46px;
 margin-top: 10px;
 margin-bottom: 10px;
 padding:25px;
 z-index: 999999;
+font-weight: 900;
+font-size: 50px;
 }
+
+
 
 /* * D3 Visualization */
 .text {
