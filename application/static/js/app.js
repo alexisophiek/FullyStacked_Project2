@@ -14,7 +14,6 @@ var height = svgHeight - margin.top - margin.bottom;
 
 // Create an SVG wrapper, append an SVG group that will hold our chart,
 // and shift the latter by left and top margins.
-
 var svg = d3
     .select(".chart")
     .append("svg")
@@ -30,12 +29,12 @@ var chartGroup = svg.append("g")
 //     .attr("y", 0 + (margin.top))
 
 chartGroup.append("text")
-    .attr("x", (width / 2))             
+    .attr("x", (width / 2))
     .attr("y", 0 - (margin.top / 2))
     .text("Oregon Counties vs US: Obesity (%) and Food Availability (per 1,000)")
     .classed("title-text", true)
-    .attr("text-anchor", "middle")  
-    // .style("text-decoration", "underline")  
+    .attr("text-anchor", "middle")
+// .style("text-decoration", "underline")  
 
 
 // // Initial Params
@@ -113,9 +112,10 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     return circlesGroup;
 }
 
+
+
 // // Retrieve data from the CSV file and execute everything below
-d3.csv("combined.csv").then(function (data, err) {
-    if (err) throw err;
+d3.csv("static/data/CSV_Files/combined.csv", function (data) {
     if (data["State"] == [data.State = "OR"]) {
         return data.State == "OR"
     }
@@ -249,16 +249,16 @@ d3.csv("combined.csv").then(function (data, err) {
                     FFRPTH14
                         .classed("active", false)
                         .classed("inactive", true);
-                    
+
                     CONVSPTH14
                         .classed("active", false)
                         .classed("inactive", true);
-                    
+
                     GROCPTH14
                         .classed("active", true)
                         .classed("inactive", false);
 
-                    
+
                 } else {
                     GROCPTH14
                         .classed("active", false)
@@ -275,10 +275,5 @@ d3.csv("combined.csv").then(function (data, err) {
 
                 }
             }
-        }
-    )}
-).catch(function (error) {
-            console.log(error)
         })
-
-
+    });

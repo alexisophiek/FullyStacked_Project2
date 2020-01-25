@@ -66,16 +66,21 @@ footer {
   font-size:14px;
 }
 
-
-/* .container {
+.container h1 {
 text-align:center;
-color: white;
-} */
-
-#chart_body {
-  background-image: linear-gradient(to bottom right, #d4d4d4, #202020);
+color: rgb(255, 199, 46);
+font-size: 46px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding:25px;
+z-index: 999999;
 }
-/* * D3 vis */
+
+body #bg-chart {
+  background-image: linear-gradient(to bottom right, white, black);
+
+}
+/* * D3 Visualization */
 .text {
   font: 30px verdana;
   font-weight: bold;

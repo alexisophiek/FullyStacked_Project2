@@ -5,16 +5,23 @@
   <meta charset="utf-8">
   {% include 'dependencies.html' %}
 
-  <title>Visualizations</title>
+  <title>USDA - Obesity: Resources Impacts in US</title>
 </head>
 
-<body id="chart-body">
+<body>
+  <div class="bg-chart">
   {% include 'nav.html' %}
   <div class="chart">
-      
+    <div>
+      <svg id="my_dataviz" height=300 width=450></svg>
+    </div>
   </div>
-
+</div>
 </body>
 {% include 'foot.html' %}
 
 </html>
+
+
+
+
