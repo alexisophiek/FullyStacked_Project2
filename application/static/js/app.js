@@ -37,7 +37,7 @@ chartGroup.append("text")
     // .style("text-decoration", "underline")  
 
 // // Initial Params
-var chosenXAxis = "FFRPTH14"
+var chosenXAxis = "POVRATE15"
 var chosenXAxis = "GROCPTH14"
 console.log(chosenXAxis)
 
@@ -80,14 +80,14 @@ function renderCircles(circlesGroup, newXScale, chosenXaxis) {
 // // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, circlesGroup) {
 
-    if (chosenXAxis === "FFRPTH14") {
-        var label = "# Fast Food Restaurants";
+    if (chosenXAxis === "POVRATE15") {
+        var label = "Poverty Rate (%)";
     }
     else if (chosenXAxis === "GROCPTH14") {
         var label = "# Grocery Stores"
     }
     else {
-        var label = "# Convenience Stores"
+        var label = "Recreation Centers"
     }
     var formatDecimal = d3.format(".1f")
 
@@ -119,10 +119,10 @@ d3.csv("combined.csv").then(function (data){
     console.log(data)
     // parse data
     data.forEach(function (data) {
-        data.FFRPTH14 = +data.FFRPTH14
+        data.POVRATE15 = +data.POVRATE15
         data.PCT_OBESE_ADULTS13 = +data.PCT_OBESE_ADULTS13;
         data.GROCPTH14 = +data.GROCPTH14;
-        data.CONVSPTH14 = +data.CONVSPTH14
+        data.PCT_LACCESS_HHNV15 = +data.PCT_LACCESS_HHNV15
         data.close = +data.close
         data.PCT_DIABETES_ADULTS13 =+ data.PCT_DIABETES_ADULTS13 ;
     });
@@ -150,7 +150,7 @@ d3.csv("combined.csv").then(function (data){
         .call(leftAxis)
 
     var color = d3.scaleOrdinal()
-        .domain(["FFRPTH14", "GROCPTH14"])
+        .domain(["POVRATE15", "GROCPTH14"])
         .range(["#ffffff", "#8B0000"])
 
         
@@ -170,12 +170,12 @@ d3.csv("combined.csv").then(function (data){
     var labelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${width / 2}, ${height + 20})`);
 
-    var FFRPTH14 = labelsGroup.append("text")
+    var POVRATE15 = labelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 30)
-        .attr("value", "FFRPTH14") // value to grab for event listener
+        .attr("value", "POVRATE15") // value to grab for event listener
         .classed("active", true)
-        .text("Fast Food Restaurants(per 1,000)")
+        .text("Poverty Rate %")
 
     var GROCPTH14 = labelsGroup.append("text")
         .attr("x", 0)
@@ -184,12 +184,12 @@ d3.csv("combined.csv").then(function (data){
         .classed("inactive", true)
         .text("Grocery Stores(per 1,000)")
 
-    var CONVSPTH14 = labelsGroup.append("text")
+    var PCT_LACCESS_HHNV15 = labelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
-        .attr("value", "CONVSPTH14") // value to grab for event listener
+        .attr("value", "PCT_LACCESS_HHNV15") // value to grab for event listener
         .classed("inactive", true)
-        .text("Convenience Stores(per 1,000)")
+        .text("Households, no car & low access to store (%)")
 
     //   // append y axis
 
@@ -224,24 +224,24 @@ d3.csv("combined.csv").then(function (data){
                 circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
                 //         // changes classes to change bold text
 
-                if (chosenXAxis === "FFRPTH14") {
-                    FFRPTH14
+                if (chosenXAxis === "POVRATE15") {
+                    POVRATE15
                         .classed("active", true)
                         .classed("inactive", false);
                     GROCPTH14
                         .classed("active", false)
                         .classed("inactive", true);
 
-                    CONVSPTH14
+                    PCT_LACCESS_HHNV15
                         .classed("active", false)
                         .classed("inactive", true);
                 }
                 else if (chosenXAxis === "GROCPTH14") {
-                    FFRPTH14
+                    POVRATE15
                         .classed("active", false)
                         .classed("inactive", true);
                     
-                    CONVSPTH14
+                    PCT_LACCESS_HHNV15
                         .classed("active", false)
                         .classed("inactive", true);
                     
@@ -254,11 +254,11 @@ d3.csv("combined.csv").then(function (data){
                     GROCPTH14
                         .classed("active", false)
                         .classed("inactive", true);
-                    CONVSPTH14
+                    PCT_LACCESS_HHNV15
                         .classed("active", true)
                         .classed("inactive", false);
 
-                    FFRPTH14
+                    POVRATE15
                         .classed("active", false)
                         .classed("inactive", true);
 
