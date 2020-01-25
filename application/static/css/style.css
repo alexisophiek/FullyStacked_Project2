@@ -8,6 +8,13 @@ body {
   height: 100vh;
 }
 
+.chart {
+    align-content: center;
+    display: inline-block;
+    margin: 0 auto;
+    padding-left: 150px;
+ }
+
 
 /*END OF CSS FOR MAP TO SHOW ^*/
 /*CSS FOR GOOGLE SLIDES IFRAME*/
@@ -43,10 +50,6 @@ body .navbar-light .navbar-nav .nav-link:hover {
   font-size: 18px;
 }
 
-/* .container { */
-  /* text-align:center; */
-  /* color: white; */
-}
 
 /* END NAVBAR STYLE */
 /*FOOTER STYLE*/

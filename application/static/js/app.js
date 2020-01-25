@@ -1,8 +1,8 @@
-var svgWidth = window.innerWidth;
-var svgHeight = window.innerHeight;
+// var svgWidth = window.innerWidth;
+// var svgHeight = window.innerHeight;
 
-// var svgWidth =600;
-// var svgHeight = 500;
+var svgWidth =1000;
+var svgHeight = 600;
 
 var margin = {
     top: 20,
@@ -19,8 +19,8 @@ var height = svgHeight - margin.top - margin.bottom;
 var svg = d3
     .select(".chart")
     .append("svg")
-    .attr("width", svgWidth * 2)
-    .attr("height", svgHeight * 2);
+    .attr("width", svgWidth * 1)
+    .attr("height", svgHeight * 1.3);
 
 // Append an SVG group
 var chartGroup = svg.append("g")
@@ -183,7 +183,7 @@ d3.csv("static/data/CSV_Files/combined.csv", function (data) {
         .attr("y", 60)
         .attr("value", "PCT_LACCESS_HHNV15") // value to grab for event listener
         .classed("inactive", true)
-        .text("Households, no car & low access to store (%)")
+        .text("Households, No Car & Low Access to Stores (%)")
 
     //   // append y axis
 
