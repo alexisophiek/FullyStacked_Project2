@@ -1,11 +1,11 @@
 
-var svgWidth = 1000;
-var svgHeight = 500;
+var svgWidth = window.innerWidth;
+var svgHeight = window.innerHeight;
 
 var margin = {
-    top: 20,
+    top: 0,
     right: 40,
-    bottom: 80,
+    bottom: 0,
     left: 100
 };
 
@@ -40,7 +40,7 @@ chartGroup.append("text")
 // // Initial Params
 var chosenXAxis = "FFRPTH14"
 var chosenXAxis = "GROCPTH14"
-console.log(chosenXAxis)
+// console.log(chosenXAxis)
 
 // // function used for updating x-scale var upon click on axis label
 function xScale(data, chosenXAxis) {
@@ -119,7 +119,7 @@ d3.csv("static/data/CSV_Files/combined.csv", function (data) {
     if (data["State"] == [data.State = "OR"]) {
         return data.State == "OR"
     }
-    console.log(data)
+    // console.log(data)
     // parse data
     data.forEach(function (data) {
         data.FFRPTH14 = +data.FFRPTH14

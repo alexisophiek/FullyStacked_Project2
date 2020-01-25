@@ -76,10 +76,6 @@ padding:25px;
 z-index: 999999;
 }
 
-body #bg-chart {
-  background-image: linear-gradient(to bottom right, white, black);
-
-}
 /* * D3 Visualization */
 .text {
   font: 30px verdana;
@@ -89,16 +85,13 @@ body #bg-chart {
 
 }
 .chart::before {
-  position: absolute;
+  position: fixed;
   font-family: 10px verdana;
-  top: 50px;
-  left: 300px;
   z-index: -1;
   display: block;
   width: 400px;
   height: 300px;
   content: " ";
-  background-attachment: 'oregon.png';
   background-repeat: no-repeat;
   background-position: 100% 0;
   background-size: cover;

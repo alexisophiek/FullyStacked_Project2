@@ -3,8 +3,8 @@ function styles(feature) {
   var prop = feature.properties
   var val = prop.PCT_OBESE_ADULTS13
   val = parseInt(val)
-  console.log(val)
-  console.log(prop)
+  // console.log(val)
+  // console.log(prop)
 
   return {
       fillColor: getColor(val),
@@ -50,7 +50,7 @@ function counties_endpoint(){
 // }
 
 counties_endpoint()
-console.log('end')
+console.log('map.js')
 
 function onEachFeature(feature, layer) {
             var popupContent = "<div>County: " + feature.properties.NAME+

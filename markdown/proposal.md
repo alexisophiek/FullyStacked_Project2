@@ -25,7 +25,7 @@ USDA’s Map visualization on this Data is helpful as we develop our initial ins
 * https://www.ers.usda.gov/data-products/food-environment-atlas/go-to-the-atlas/
 
 ### Potential Visualizations
-Primary - Oregon Heat Map by County based on Health Risks (Obesity/Diabetes/et al)
+Primary - Oregon Map by County based on Health Risks (Obesity/Diabetes/et al)
 County Hover - Detach, Zoom, Input Proximity Info into County Shape - AK to Research
 
 Trend Analysis: As access increases, health increases
